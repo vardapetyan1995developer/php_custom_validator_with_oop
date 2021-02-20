@@ -51,9 +51,10 @@ class Validator
             {
                 /**@var RuleInterface $rule*/
                 if(! $rule instanceof RuleInterface)
-                {
                     throw new UndefinedRuleException('Given rule must be instance of ' . RuleInterface::class);
-                }
+
+                if(! $rule->isPassed($input))
+                    $this->addError($attribute, $rule->message($attribute));
             }
         }
 
