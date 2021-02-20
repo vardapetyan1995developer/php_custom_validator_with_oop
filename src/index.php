@@ -1,16 +1,25 @@
 <?php
 
 use Rules\Alphabetical;
+use Rules\Numeric;
 use Rules\Required;
 
 require_once '../vendor/autoload.php';
 
-$attributes = ['name' => ''];
+$attributes = ['name' => '', 'age' => 'gf'];
 
 $rules = [
-    'name' => [new Required, new Alphabetical]
+    'name' => [new Required, new Alphabetical],
+    'age' => [new Required, new Numeric],
 ];
 
-$validator = Validator::make($rules, $attributes);
+try
+{
+    $validator = Validator::make($rules, $attributes);
+}
+catch (Exceptions\UndefinedRuleException $ex)
+{
+    echo $ex->getMessage();
+}
 
 print_r($validator->getErrors());
