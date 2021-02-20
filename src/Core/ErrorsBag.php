@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class ErrorsBag
+trait ErrorsBag
 {
     /**
      * Errors bag
