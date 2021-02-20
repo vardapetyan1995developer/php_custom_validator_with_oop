@@ -28,4 +28,13 @@ class ErrorsBag
     {
         return $this->errors;
     }
+
+    /**
+     * If validator has errors return true.
+     * @return bool
+     */
+    public function hasErrors(): bool
+    {
+        return (bool) $this->errors;
+    }
 }
